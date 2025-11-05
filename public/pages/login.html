@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Log In</h1>
+        <form id="login-form">
+            <!-- User Email Field -->
+            <div class="input-group">
+                <label for="user-email">User Email</label>
+                <input type="email" id="user-email" name="userEmail" required>
+            </div>
+            <!-- User Password Field -->
+            <div class="input-group password-group">
+                <label for="user-password">User Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="user-password" name="userPassword" required>
+                    <span id="toggle-password" class="eye-icon" aria-label="Toggle password visibility">&#128065;</span>
+                </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="input-group">
+              <a href="FRONTEND/p.html">
+                <button type="submit">Log In</button>
+            </a>            
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const passwordInput = document.getElementById('user-password');
+        const togglePassword = document.getElementById('toggle-password');
+
+        // Toggle password visibility
+        togglePassword.addEventListener('click', () => {
+            const isPasswordHidden = passwordInput.type === 'password';
+            passwordInput.type = isPasswordHidden ? 'text' : 'password';
+            togglePassword.classList.toggle('active'); // Toggle the active class for styling
+        });
+
+        loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const userEmail = document.getElementById('user-email').value;
+            const userPassword = document.getElementById('user-password').value;
+
+            const response = await fetch('http://localhost:4000/api/user/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: userEmail,
+                    password: userPassword,
+                }),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert('login successful!');
+                window.location.href = 'p.html';
+            } else {
+                alert(`Error: ${result.message}`);
+            }
+        });
+    </script>
+</body>
+
+</html>

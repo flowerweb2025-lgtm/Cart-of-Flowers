@@ -1,0 +1,171 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1b1f23; /* Dark background for better contrast */
+  color: #c8e6e3; /* Light teal text color for readability */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+  background-image: url(03.jpeg); /* Add an aurora or relevant image */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Form Container */
+.form-container {
+  background: linear-gradient(135deg, #4eacb1, #8a4ccf, #2d98bf, #4f9a94); /* Northern Lights-inspired gradient */
+  border-radius: 10px;
+  padding: 25px 35px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  opacity: 0;
+  animation: slideIn 1s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Form Header */
+.form-container h1 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+/* Input Groups */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: bold;
+  color: #c8e6e3; /* Light teal for label */
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #8a4ccf; /* Purple border */
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #2d98bf; /* Soft blue text */
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #4eacb1; /* Light teal on focus */
+  transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Button */
+button {
+  background-color: #8a4ccf; /* Purple button */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #2d98bf; /* Soft blue on hover */
+  transform: translateY(-2px); /* Slight hover animation */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Links */
+a {
+  color: #c8e6e3; /* Light teal for links */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #4eacb1; /* Light teal-green on hover */
+  text-decoration: underline;
+}
+/* Media Query for Screens 600px and Below */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+    height: auto; /* Adjust height for smaller screens */
+    justify-content: flex-start; /* Align content to the top */
+  }
+
+  .form-container {
+    padding: 20px 25px; /* Adjust padding */
+    max-width: 90%; /* Reduce form width */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for smaller screens */
+  }
+
+  .form-container h1 {
+    font-size: 1.5em; /* Slightly smaller header */
+  }
+
+  .input-group input {
+    padding: 8px; /* Reduce input padding */
+    font-size: 14px; /* Smaller font size for inputs */
+  }
+
+  button {
+    padding: 8px 12px; /* Adjust button padding */
+    font-size: 14px; /* Smaller font size for button */
+  }
+}
+
+/* Media Query for Screens 400px and Below */
+@media (max-width: 400px) {
+  body {
+    padding: 5px;
+    height: auto; /* Further adjust height */
+    flex-direction: column; /* Stack items vertically */
+  }
+
+  .form-container {
+    padding: 15px 20px; /* Further reduce padding */
+    max-width: 95%; /* Narrower form width */
+  }
+
+  .form-container h1 {
+    font-size: 1.3em; /* Smaller header size */
+  }
+
+  .input-group input {
+    padding: 6px; /* Further reduce input padding */
+    font-size: 12px; /* Smaller font size for inputs */
+  }
+
+  button {
+    padding: 6px 10px; /* Smaller button padding */
+    font-size: 12px; /* Smaller font size for button */
+  }
+}
