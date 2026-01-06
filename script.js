@@ -1,9 +1,9 @@
 // Product Data
 const products = [
-    // Birthday Collection (10+ items)
-    { id: 1, name: 'Birthday Celebration', price: 58, image: 'https://images.unsplash.com/photo-1667489024245-7beb09ac43c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Vibrant mixed blooms perfect for birthdays', category: 'Birthday' },
+    // Birthday Collection (11 items)
+    { id: 1, name: 'Colorful Mix', price: 58, image: 'https://images.unsplash.com/photo-1667489024245-7beb09ac43c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Vibrant mixed blooms perfect for birthdays', category: 'Birthday' },
     { id: 2, name: 'Cheerful Daisies', price: 42, image: 'https://images.unsplash.com/photo-1610056385356-45c56142f6fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Happy daisies to brighten any birthday', category: 'Birthday' },
-    { id: 3, name: 'Colorful Mix', price: 52, image: 'https://images.unsplash.com/photo-1642728265490-2ea6c3320880?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'A joyful mix for birthday celebrations', category: 'Birthday' },
+    { id: 3, name: 'Birthday Celebration', price: 52, image: 'https://images.unsplash.com/photo-1642728265490-2ea6c3320880?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'A joyful mix for birthday celebrations', category: 'Birthday' },
     { id: 4, name: 'Rainbow Delight', price: 64, image: 'https://images.unsplash.com/photo-1567113211587-73b0f58c97e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Colorful rainbow bouquet for special days', category: 'Birthday' },
     { id: 5, name: 'Gerbera Joy', price: 48, image: 'https://images.unsplash.com/photo-1683073022704-c14d8002ee63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Vibrant gerbera daisies full of joy', category: 'Birthday' },
     { id: 6, name: 'Birthday Bliss', price: 56, image: 'https://images.unsplash.com/photo-1689061732262-2f8a68fa99cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Stunning arrangement for birthday wishes', category: 'Birthday' },
@@ -13,7 +13,7 @@ const products = [
     { id: 10, name: 'Yellow Sunshine', price: 46, image: 'https://images.unsplash.com/photo-1673277848241-86e145cd7112?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Bright yellow blooms for happiness', category: 'Birthday' },
     { id: 11, name: 'Spring Meadow', price: 58, image: 'https://images.unsplash.com/photo-1615669527168-8766827a7159?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Fresh spring flowers for celebration', category: 'Birthday' },
     
-    // Mother's Day Collection (10+ items)
+    // Mother's Day Collection (11 items)
     { id: 12, name: 'Pink Carnations', price: 48, image: 'https://images.unsplash.com/photo-1666188855175-1aff7091f561?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: "Classic carnations for Mother's Day", category: "Mother's Day" },
     { id: 13, name: 'Rose Romance', price: 65, image: 'https://images.unsplash.com/photo-1754731995953-3e588560d7e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Elegant pink roses for Mom', category: "Mother's Day" },
     { id: 14, name: 'Peony Perfection', price: 72, image: 'https://images.unsplash.com/photo-1588457776180-4206b4909301?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: "Luxurious peonies she'll adore", category: "Mother's Day" },
@@ -26,7 +26,7 @@ const products = [
     { id: 21, name: 'Ranunculus Beauty', price: 66, image: 'https://images.unsplash.com/photo-1678882891382-27d7897b5b1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Delicate ranunculus flowers', category: "Mother's Day" },
     { id: 22, name: 'Mothers Day Special', price: 82, image: 'https://images.unsplash.com/photo-1610898763619-6d31c36ca610?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Special bouquet for Mom', category: "Mother's Day" },
     
-    // Romantic Collection (10+ items)
+    // Romantic Collection (11 items)
     { id: 23, name: 'Red Rose Romance', price: 75, image: 'https://images.unsplash.com/photo-1712677927853-4481a1c078bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Classic red roses for romance', category: 'Romantic' },
     { id: 24, name: 'Elegant Lilies', price: 62, image: 'https://images.unsplash.com/photo-1653267409726-a77cd6b3aa78?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Sophisticated white lilies', category: 'Romantic' },
     { id: 25, name: 'Orchid Elegance', price: 85, image: 'https://images.unsplash.com/photo-1759549885072-ea7f9fc57bcf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Exotic orchids for a special someone', category: 'Romantic' },
@@ -39,7 +39,7 @@ const products = [
     { id: 32, name: 'Pure Love', price: 88, image: 'https://images.unsplash.com/photo-1711464512469-d5376f5bc18d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Pure white and pink romance', category: 'Romantic' },
     { id: 33, name: 'Passion Red Roses', price: 82, image: 'https://images.unsplash.com/photo-1712677927853-4481a1c078bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Deep red roses for true love', category: 'Romantic' },
     
-    // Casual Collection (10+ items)
+    // Casual Collection (11 items)
     { id: 34, name: 'Pure Tulips', price: 38, image: 'https://images.unsplash.com/photo-1570030467891-0c0e47ed6e46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Simple elegance for any day', category: 'Casual' },
     { id: 35, name: 'Spring Tulips', price: 44, image: 'https://images.unsplash.com/photo-1580403072903-36afa4f4c9f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Fresh tulips to brighten the day', category: 'Casual' },
     { id: 36, name: 'Lavender Dreams', price: 42, image: 'https://images.unsplash.com/photo-1620661366618-92f3e77f332d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080', description: 'Calming lavender for relaxation', category: 'Casual' },

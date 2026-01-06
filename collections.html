@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections - Bloomelle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <svg class="flower-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V12m0 0a4.5 4.5 0 1 0 4.5 4.5M12 12a4.5 4.5 0 1 1-4.5 4.5M12 12h4.5m0 0a4.5 4.5 0 1 1-4.5 4.5m0 0V12m0 0H7.5m0 0a4.5 4.5 0 1 0 4.5-4.5"/>
+                </svg>
+                <span>Bloomelle</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="nav-links desktop-nav">
+                <a href="index.html">Home</a>
+                <a href="collections.html" class="active">Collections</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <button class="cart-btn" onclick="openCart()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div id="userDisplay" class="user-display" style="display: none;">
+                    <span id="userName"></span>
+                    <button onclick="handleLogout()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                            <polyline points="16 17 21 12 16 7"/>
+                            <line x1="21" y1="12" x2="9" y2="12"/>
+                        </svg>
+                    </button>
+                </div>
+                <button id="signInBtn" class="sign-in-btn" onclick="openAuthModal()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    Sign In
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg id="menuIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+                <svg id="closeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu">
+            <div id="mobileUserDisplay" class="mobile-user-display" style="display: none;">
+                <p>Welcome, <span id="mobileUserName"></span>!</p>
+            </div>
+            <a href="index.html">Home</a>
+            <a href="collections.html" class="active">Collections</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <button onclick="openCart(); toggleMobileMenu();">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                Cart <span id="mobileCartCount"></span>
+            </button>
+            <button id="mobileAuthBtn" onclick="handleMobileAuth()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                Sign In
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Collections</h1>
+            <p>Each arrangement is thoughtfully designed and crafted with the finest blooms</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <!-- Category Filters -->
+            <div class="category-filters" id="categoryFilters">
+                <button class="active" onclick="filterCategory('All')">All</button>
+                <button onclick="filterCategory('Birthday')">Birthday</button>
+                <button onclick="filterCategory('Mother\'s Day')">Mother's Day</button>
+                <button onclick="filterCategory('Romantic')">Romantic</button>
+                <button onclick="filterCategory('Casual')">Casual</button>
+                <button onclick="filterCategory('Planting Flowers')">Planting Flowers</button>
+                <button onclick="filterCategory('Seasonal Flowers')">Seasonal Flowers</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically inserted here -->
+                <div class="loading-state">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V12m0 0a4.5 4.5 0 1 0 4.5 4.5M12 12a4.5 4.5 0 1 1-4.5 4.5M12 12h4.5m0 0a4.5 4.5 0 1 1-4.5 4.5m0 0V12m0 0H7.5m0 0a4.5 4.5 0 1 0 4.5-4.5"/>
+                    </svg>
+                    <p>Loading our beautiful collections...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V12m0 0a4.5 4.5 0 1 0 4.5 4.5M12 12a4.5 4.5 0 1 1-4.5 4.5M12 12h4.5m0 0a4.5 4.5 0 1 1-4.5 4.5m0 0V12m0 0H7.5m0 0a4.5 4.5 0 1 0 4.5-4.5"/>
+                        </svg>
+                        <span>Bloomelle</span>
+                    </div>
+                    <p>Bringing nature's beauty into your life with handcrafted floral arrangements.</p>
+                    <div class="social-links">
+                        <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="collections.html">Collections</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Wedding Flowers</a></li>
+                        <li><a href="#">Event Decoration</a></li>
+                        <li><a href="#">Corporate Gifts</a></li>
+                        <li><a href="#">Subscription Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive special offers and floral tips.</p>
+                    <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bloomelle. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cartOverlay" class="cart-overlay"></div>
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <div class="cart-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                <h2>Shopping Cart</h2>
+            </div>
+            <button class="modal-close" onclick="closeCart()">&times;</button>
+        </div>
+
+        <div id="emptyCart" class="empty-cart" style="display: none;">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <p>Your cart is empty</p>
+            <button onclick="closeCart()" class="empty-cart-btn">Continue Shopping</button>
+        </div>
+
+        <div id="cartContent" class="cart-content">
+            <div id="cartItemsContainer" class="cart-items">
+                <!-- Cart items will be inserted here -->
+            </div>
+
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">AED 0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery Fee</span>
+                    <span id="cartDelivery">AED 25.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="cartTotal">AED 0.00</span>
+                </div>
+                <button class="checkout-btn" onclick="openCheckoutModal()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content auth-modal">
+            <button class="modal-close" onclick="closeAuthModal()">&times;</button>
+            <div class="auth-header">
+                <div class="auth-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V12m0 0a4.5 4.5 0 1 0 4.5 4.5M12 12a4.5 4.5 0 1 1-4.5 4.5M12 12h4.5m0 0a4.5 4.5 0 1 1-4.5 4.5m0 0V12m0 0H7.5m0 0a4.5 4.5 0 1 0 4.5-4.5"/>
+                    </svg>
+                </div>
+                <h2 id="authTitle">Welcome Back</h2>
+                <p id="authSubtitle">Sign in to access your account</p>
+            </div>
+
+            <div id="authError" class="auth-error" style="display: none;"></div>
+
+            <form id="authForm">
+                <div class="form-group" id="nameGroup" style="display: none;">
+                    <label for="authName">Full Name</label>
+                    <input type="text" id="authName" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="authEmail">Email Address</label>
+                    <input type="email" id="authEmail" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="authPassword">Password</label>
+                    <input type="password" id="authPassword" required placeholder="••••••••" minlength="6">
+                    <p class="password-hint" id="passwordHint" style="display: none;">Minimum 6 characters</p>
+                </div>
+                <button type="submit" class="auth-submit" id="authSubmit">Sign In</button>
+            </form>
+
+            <div class="auth-toggle">
+                <p id="authToggleText">Don't have an account? <button type="button" onclick="toggleAuthMode()">Sign up</button></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content checkout-modal">
+            <button class="modal-close" onclick="closeCheckoutModal()">&times;</button>
+            <h2>Complete Your Order</h2>
+            
+            <form id="checkoutForm">
+                <!-- Delivery Information -->
+                <div class="checkout-section">
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                        Delivery Information
+                    </h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Delivery Address *</label>
+                        <input type="text" id="address" placeholder="Street address" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <input type="text" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emirate">Emirate *</label>
+                            <select id="emirate" required>
+                                <option value="">Select Emirate</option>
+                                <option value="Abu Dhabi">Abu Dhabi</option>
+                                <option value="Dubai">Dubai</option>
+                                <option value="Sharjah">Sharjah</option>
+                                <option value="Ajman">Ajman</option>
+                                <option value="Umm Al Quwain">Umm Al Quwain</option>
+                                <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+                                <option value="Fujairah">Fujairah</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="deliveryDate">Preferred Delivery Date *</label>
+                            <input type="date" id="deliveryDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryTime">Preferred Delivery Time</label>
+                            <select id="deliveryTime">
+                                <option value="morning">Morning (9AM - 12PM)</option>
+                                <option value="afternoon">Afternoon (12PM - 4PM)</option>
+                                <option value="evening">Evening (4PM - 8PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Information -->
+                <div class="checkout-section">
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                            <line x1="1" y1="10" x2="23" y2="10"/>
+                        </svg>
+                        Payment Method
+                    </h3>
+                    <div class="payment-methods">
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="cod" checked>
+                            <div class="payment-option-content">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="1" x2="12" y2="23"/>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                                <div>
+                                    <strong>Cash on Delivery</strong>
+                                    <p>Pay when you receive</p>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="card">
+                            <div class="payment-option-content">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                    <line x1="1" y1="10" x2="23" y2="10"/>
+                                </svg>
+                                <div>
+                                    <strong>Credit / Debit Card</strong>
+                                    <p>Secure online payment</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="checkout-section">
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                        Order Summary
+                    </h3>
+                    <div class="order-summary-items" id="checkoutSummary">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                    <div class="order-totals">
+                        <div class="order-total-row">
+                            <span>Subtotal</span>
+                            <span id="checkoutSubtotal">AED 0.00</span>
+                        </div>
+                        <div class="order-total-row">
+                            <span>Delivery Fee</span>
+                            <span id="checkoutDelivery">AED 25.00</span>
+                        </div>
+                        <div class="order-total-row total">
+                            <span>Total</span>
+                            <span id="checkoutTotal">AED 0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="specialInstructions">Special Instructions (Optional)</label>
+                    <textarea id="specialInstructions" rows="3" placeholder="Any special requests for your order?"></textarea>
+                </div>
+
+                <button type="submit" class="checkout-submit-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
